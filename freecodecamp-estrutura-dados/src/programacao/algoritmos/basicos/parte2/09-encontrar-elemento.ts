@@ -5,9 +5,9 @@
  * @param {Function} funcao 
  * @returns 
  */
-function encontrarElemento(arr, funcao){
-  for (const element of arr){
-    if(funcao(element)){
+function encontrarElemento(arr: any, funcao: Function) {
+  for (const element of arr) {
+    if (funcao(element)) {
       return element;
     }
   }
@@ -16,31 +16,31 @@ function encontrarElemento(arr, funcao){
 
 //1ª solução do site. parecida com a minha.
 //2ª solução do site.
-function findElement2(arr, func) {
+function findElement2(arr: any, func: Function) {
   return arr.find(func); //estudar documentação de arrays MDN
 }
 
 //3ª solução do site.
-function findElement3(arr, func) {
+function findElement3(arr: any, func: Function) {
   return arr[arr.map(func).indexOf(true)];
 }
 
 //4ª solução do site.
-function findElement4(arr, func) {
+function findElement4(arr: any, func: Function) {
   if (arr.length > 0 && !func(arr[0])) {
-    return findElement(arr.slice(1), func);
+    return findElement4(arr.slice(1), func);
   } else {
     return arr[0];
   }
 }
 
 //4ª modificada com operador ternario
-function findElement5(arr, func) {
-  return arr.length > 0 && !func(arr[0]) 
-            ? findElement(arr.slice(1), func)
-            : arr[0];
+export function findElement5(arr: any, func: Function): any {
+  return arr.length > 0 && !func(arr[0])
+    ? findElement5(arr.slice(1), func)
+    : arr[0];
 }
 
-module.exports = {
-  encontrarElemento    
+export {
+  encontrarElemento
 };

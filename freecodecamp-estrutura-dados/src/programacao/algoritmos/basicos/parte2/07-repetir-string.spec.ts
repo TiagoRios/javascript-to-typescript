@@ -1,4 +1,4 @@
-const { repetirStringNVezes } = require('./07-repetir-string.js');
+import { repetirStringNVezes } from './07-repetir-string';
 
 test('Deve retornar uma string', () => {
     expect(typeof repetirStringNVezes('a', 2)).toBe('string');

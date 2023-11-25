@@ -1,4 +1,4 @@
-const { confirmeFinal } = require('./06-confirme-final');
+import { confirmeFinal } from './06-confirme-final';
 
 test('Deve retornar um numero', () => {
     expect(typeof confirmeFinal('a')).toBe('boolean');

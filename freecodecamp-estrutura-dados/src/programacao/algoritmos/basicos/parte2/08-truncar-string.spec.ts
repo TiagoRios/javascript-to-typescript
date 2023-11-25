@@ -1,4 +1,4 @@
-const { truncarString } = require('./08-truncar-string.js');
+import { truncarString } from './08-truncar-string';
 
 const string1 = "A-tisket a-tasket A green and yellow basket";
 const string2 = "Peter Piper picked a peck of pickled peppers";

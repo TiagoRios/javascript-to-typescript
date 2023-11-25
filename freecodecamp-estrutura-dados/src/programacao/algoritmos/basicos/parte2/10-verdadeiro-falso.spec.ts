@@ -1,4 +1,4 @@
-const { verdadeiroFalso } = require('./10-verdadeiro-falso.js');
+import { verdadeiroFalso } from './10-verdadeiro-falso';
 
 test('Deve retornar true', () => {
     expect(verdadeiroFalso(true)).toBe(true);
@@ -10,7 +10,7 @@ test('Deve retornar false', () => {
     expect(verdadeiroFalso([].slice())).toBe(false);
 });
 test('Deve retornar false', () => {
-    expect(verdadeiroFalso({'a': 1})).toBe(false);
+    expect(verdadeiroFalso({ 'a': 1 })).toBe(false);
 });
 test('Deve retornar false', () => {
     expect(verdadeiroFalso(1)).toBe(false);

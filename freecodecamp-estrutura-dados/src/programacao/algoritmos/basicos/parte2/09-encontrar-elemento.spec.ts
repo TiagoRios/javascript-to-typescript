@@ -1,9 +1,9 @@
-const { encontrarElemento } = require('./09-encontrar-elemento');
+import { encontrarElemento } from './09-encontrar-elemento';
 
-function par(numero) {
+function par(numero: number) {
     return numero % 2 === 0;
 }
-function impar(numero) {
+function impar(numero: number) {
     return numero % 2 !== 0;
 }
 
