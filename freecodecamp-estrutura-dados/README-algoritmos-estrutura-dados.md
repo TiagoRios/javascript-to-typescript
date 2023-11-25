@@ -8,19 +8,37 @@ Assim que souber os fundamentos abaixo, você aplicará esse conhecimento, crian
 
 Durante o processo, você também aprenderá dois estilos ou paradigmas de programação importantes: a Programação Orientada a Objetos (POO) e a Programação Funcional (PF).
 
-## Configuração para utilizar ES6 modules com JEST/TEST.
+## Configuração para utilizar ES6 modules com JEST/TEST/Typescript.
 
 ### Import/Export: 
 ![Alt text](imagens-codesnap/code-modules-ES6.png)
 
-Instale o babel:
 
-##
-    npm install --save-dev babel-jest
+## Instale o babel e suas predefinições e babel com o JEST:
 
-Altere o package.json:
+    npm install --save-dev @babel/core @babel/preset-env babel-jest
+
+## Instale predefinições do typescript do babel:
+
+    npm install --save-dev @babel/preset-typescript
+
+
+### .babelrc
+
+Crie o arquivo: ".babelrc" na raiz do projeto, para utilizar as predefinições:
+
+<pre>
+{
+  "presets": [
+    "@babel/preset-env",
+    "@babel/preset-typescript"
+  ],
+}
+</pre>
 
 ### package.json
+
+Altere o package.json para transformar arquivos JS, JSX, TS e TSX :
 
 <pre> {
   "scripts": {
@@ -28,22 +46,8 @@ Altere o package.json:
   },
   "jest": {
     "transform": {
-      "^.+\\.jsx?$": "babel-jest"
+      "^.+\\.[tj]sx?$": "babel-jest"
     }
   }
 }
-</pre>
-
-Instale as pre-configurações do babel:
-###
-    npm install @babel/preset-env --save-dev
-
-Crie o arquivo: ".babelrc" na raiz do projeto:
-
-### .babelrc
-
-<pre>
-  {
-    "presets": ["@babel/preset-env"]
-  }
 </pre>
