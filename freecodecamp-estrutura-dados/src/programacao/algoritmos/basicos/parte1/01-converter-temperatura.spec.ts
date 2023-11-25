@@ -1,4 +1,4 @@
-const { celsiusParaFahrenheit } = require('./01-converter-temperatura.js');
+import { celsiusParaFahrenheit } from './01-converter-temperatura';
 
 describe('Converter celsius para fahrenheit', () => {
     test('Deve retornar um número', () => {

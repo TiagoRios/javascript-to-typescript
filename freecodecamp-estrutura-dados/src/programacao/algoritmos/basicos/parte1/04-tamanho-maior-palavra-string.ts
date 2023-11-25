@@ -1,18 +1,19 @@
-function encontrarTamanhoMaiorPalavraString(str) {
-    let arr = [];
-    arr = str.split(' ');
-    str = 0;
+function encontrarTamanhoMaiorPalavraString(strr: string): number {
+    let words = [];
 
-    for (let i in arr) {
-        if (str < arr[i].length) {
-            str = arr[i].length;
+    words = strr.split(' ');
+    let size = 0;
+
+    for (let word in words) {
+        if (size < words[word].length) {
+            size = words[word].length;
         }
     }
-    return str;
+    return size;
 }
 
 //1ª solução site
-function findLongestWordLength1(str) {
+function findLongestWordLength1(str: string): number {
     let longestLength = 0;
     let currentLength = 0;
 
@@ -35,36 +36,36 @@ function findLongestWordLength1(str) {
 
 //2ª solução site igual a minha
 //3ª solução site - REDUCE()
-function findLongestWordLength3(s) {
+function findLongestWordLength3(s: string) {
     return s
         .split(' ')
         .reduce((longest, word) => Math.max(longest, word.length), 0);
 }
 
 //4ª solução site - MAP(). Essa Eh top !
-function findLongestWordLength4(str) {
+function findLongestWordLength4(str: string) {
     return Math.max(...str.split(" ").map(word => word.length));
 }
 
 //5ª solução site
-function findLongestWordLength5(str) {
+function findLongestWordLength5(str: string): number {
     // split the string into individual words
     const words = str.split(" ");
-  
+
     // words only has 1 element left that is the longest element
     if (words.length == 1) {
-      return words[0].length;
+        return words[0].length;
     }
-  
+
     // if words has multiple elements, remove the first element
     // and recursively call the function
     return Math.max(
-      words[0].length,
-      findLongestWordLength5(words.slice(1).join(" "))
+        words[0].length,
+        findLongestWordLength5(words.slice(1).join(" "))
     );
-  }
-  
+}
 
-module.exports = {
+
+export {
     encontrarTamanhoMaiorPalavraString
 };

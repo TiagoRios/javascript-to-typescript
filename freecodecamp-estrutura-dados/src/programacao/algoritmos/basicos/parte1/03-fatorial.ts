@@ -1,18 +1,18 @@
-function fatorial(n){
-  if(n < 1){
+function fatorial(n: number): number {
+  if (n < 1) {
     return 1;
-  }else {
-    return n * fatorial(n-1);
+  } else {
+    return n * fatorial(n - 1);
   }
 }
 
-function fatorial2(n){
-    return n < 1 ? 1 : n * fatorial2(n-1);
+function fatorial2(n: number): number {
+  return n < 1 ? 1 : n * fatorial2(n - 1);
 }
 
 
 //1ª solução do site
-function factorialize1(num) {
+function factorialize1(num: number) {
   let product = 1;
   for (let i = 2; i <= num; i++) {
     product *= i;
@@ -22,7 +22,7 @@ function factorialize1(num) {
 
 //2ª solução do site parecida com a minha segunda.
 //3ª solução do site modifica a assinatura da função.
-function factorialize3(num, factorial = 1) {
+function factorialize3(num: number, factorial = 1) {
   if (num === 0) {
     return factorial;
   } else {
@@ -31,13 +31,13 @@ function factorialize3(num, factorial = 1) {
 }
 
 //4ª solução do site. Ficou muito complexa.
-function factorialize4(num) {
+function factorialize4(num: number) {
   return num < 0 ? 1 :
     new Array(num)
       .fill(undefined)
       .reduce((product, _, index) => product * (index + 1), 1);
 }
 
-module.exports = {
-    fatorial
+export {
+  fatorial
 };

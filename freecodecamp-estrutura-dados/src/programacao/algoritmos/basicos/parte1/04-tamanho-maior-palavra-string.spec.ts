@@ -1,4 +1,5 @@
-const { encontrarTamanhoMaiorPalavraString } = require('./04-tamanho-maior-palavra-string.js');
+import { encontrarTamanhoMaiorPalavraString } from './04-tamanho-maior-palavra-string';
+
 const texto1 = 'The quick brown fox jumped over the lazy dog';
 const texto2 = 'Qual tamanho da maior palavra nesse texto';
 const texto3 = 'What if we try a super-long word such as otorhinolaryngology';

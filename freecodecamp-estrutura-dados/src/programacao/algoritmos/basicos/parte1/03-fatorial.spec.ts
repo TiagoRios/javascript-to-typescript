@@ -1,4 +1,4 @@
-const { fatorial } = require('./03-fatorial.js');
+import { fatorial } from './03-fatorial';
 
 test('Deve retornar um numero', () => {
     expect(typeof fatorial(3)).toBe('number');

@@ -1,4 +1,4 @@
-const { inverterString } = require('./02-inverter-string.js');
+import { inverterString } from './02-inverter-string';
 
 test('Deve retornar uma string', () => {
     expect(typeof inverterString('asdf')).toBe('string');
