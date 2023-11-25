@@ -1,7 +1,7 @@
-const { dividirAgruparArrays } = require('./16-dividir-agrupar-arrays.js');
+import { dividirAgruparArrays } from './16-dividir-agrupar-arrays';
 
 test('Deve retornar um array', () => {
-    expect(Array.isArray(dividirAgruparArrays([1,2,3,4], 2))).toBe(true);
+    expect(Array.isArray(dividirAgruparArrays([1, 2, 3, 4], 2))).toBe(true);
 });
 test('Deve retornar array agrupado de 2 em 2', () => {
     expect(dividirAgruparArrays(["a", "b", "c", "d"], 2)).toEqual([["a", "b"], ["c", "d"]]);

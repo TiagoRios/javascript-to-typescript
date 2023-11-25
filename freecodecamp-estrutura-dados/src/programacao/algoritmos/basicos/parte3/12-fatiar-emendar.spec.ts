@@ -1,10 +1,10 @@
-const { fatiarEmendar } = require('./12-fatiar-emendar.js');
+import { fatiarEmendar } from './12-fatiar-emendar';
 
 const arr1 = [1, 2, 3];
-const arr2 =  [4, 5];
+const arr2 = [4, 5];
 
 test('Deve retornar um array', () => {
-    expect(Array.isArray(fatiarEmendar([2,3],[0,1,4,5], 2))).toBe(true);
+    expect(Array.isArray(fatiarEmendar([2, 3], [0, 1, 4, 5], 2))).toBe(true);
 });
 test('Deve retornar o array [4, 1, 2, 3, 5]', () => {
     expect(fatiarEmendar([1, 2, 3], [4, 5], 1)).toEqual([4, 1, 2, 3, 5]);

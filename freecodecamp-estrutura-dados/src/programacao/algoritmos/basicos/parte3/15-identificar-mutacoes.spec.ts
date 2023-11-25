@@ -1,4 +1,4 @@
-const { identificarMutacoes } = require('./15-identificar-mutacoes.js');
+import { identificarMutacoes } from './15-identificar-mutacoes';
 
 describe('Deve retornar true', () => {
     test('Se todas as letras da 2ª string estiverem presentes na 1ª', () => {
@@ -27,7 +27,7 @@ describe('Deve retornar true', () => {
 describe('Deve retornar false', () => {
     test('Se todas as letras da 2ª string não estiverem presentes na 1ª', () => {
         expect(identificarMutacoes(["hello", "R3IIÓ"])).toEqual(false);
-    }); 
+    });
     test('Ao menos um caracter da 2ª string não estiver na 1ª', () => {
         expect(identificarMutacoes(["hello", "hellx"])).toEqual(false);
     });

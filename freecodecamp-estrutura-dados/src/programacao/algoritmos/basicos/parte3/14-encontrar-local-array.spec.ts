@@ -1,4 +1,4 @@
-const { encontrarIndexParaInserir } = require('./14-encontrar-local-array.js');
+import { encontrarIndexParaInserir } from './14-encontrar-local-array';
 
 test('Deve retornar um número', () => {
     expect(typeof encontrarIndexParaInserir([50, 20, 40, 10, 30], 35)).toBe('number');

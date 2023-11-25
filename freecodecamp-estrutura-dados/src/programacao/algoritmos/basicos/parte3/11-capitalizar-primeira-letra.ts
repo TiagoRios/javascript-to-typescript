@@ -1,4 +1,4 @@
-function capitalizarPrimeiraLetraPalavras(str) { //1 array - 1 laço - 4 métodos
+function capitalizarPrimeiraLetraPalavras(str: string) { //1 array - 1 laço - 4 métodos
   let arrayPalavrasMinusculas = str.toLowerCase().split(' ');
 
   str = '';
@@ -10,31 +10,33 @@ function capitalizarPrimeiraLetraPalavras(str) { //1 array - 1 laço - 4 método
 }
 
 //1ª solução do site
-function titleCase1(str) { //2 arrays - 1 laço - 5 métodos
+function titleCase1(str: string) { //2 arrays - 1 laço - 5 métodos
   const newTitle = str.split(" ");
-  const updatedTitle = [];
+  const updatedTitle: any = [];
+
   for (let st in newTitle) {
     updatedTitle[st] = newTitle[st][0].toUpperCase() + newTitle[st].slice(1).toLowerCase();
   }
+
   return updatedTitle.join(" ");
 }
 
 //2ª solução do site.
-function titleCase2(str) { //7 metodos - 1 função anonima
-  return str 
-  .toLowerCase()
-  .split(" ")
-  .map(val => val.replace(val.charAt(0), val.charAt(0).toUpperCase()))
-  .join(" ");
+function titleCase2(str: string) { //7 metodos - 1 função anonima
+  return str
+    .toLowerCase()
+    .split(" ")
+    .map(val => val.replace(val.charAt(0), val.charAt(0).toUpperCase()))
+    .join(" ");
 }
 
 //3ª solução do site. Código mais fácil de ler e manter.
-function titleCase3(str) { //3 metodos - 1 função anonima
+function titleCase3(str: string) { //3 metodos - 1 função anonima
   return str
     .toLowerCase()
     .replace(/(^|\s)\S/g, L => L.toUpperCase());
 }
 
-module.exports = {
+export {
   capitalizarPrimeiraLetraPalavras
 };

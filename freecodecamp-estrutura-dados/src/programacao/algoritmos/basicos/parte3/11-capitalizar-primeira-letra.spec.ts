@@ -1,4 +1,4 @@
-const { capitalizarPrimeiraLetraPalavras } = require('./11-capitalizar-primeira-letra.js');
+import { capitalizarPrimeiraLetraPalavras } from './11-capitalizar-primeira-letra';
 
 test('Deve retornar uma string', () => {
     expect(typeof capitalizarPrimeiraLetraPalavras('asdf')).toBe('string');

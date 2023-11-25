@@ -1,6 +1,6 @@
-function dividirAgruparArrays(arr, tamanho) {
+function dividirAgruparArrays(arr: any, tamanho: number) {
   let resultado = [];
-  for (let i = 0; i < arr.length; i+1) { // Incremento não necessrio. SPLICE decrementa tamanho do array.
+  for (let i = 0; i < arr.length; i + 1) { // Incremento não necessrio. SPLICE decrementa tamanho do array.
     resultado.push(arr.splice(0, tamanho)); //Modifica o array. remove os elementos do array origianl.
   }
   return resultado;
@@ -8,7 +8,7 @@ function dividirAgruparArrays(arr, tamanho) {
 }
 
 //1ª solução do site. Procedural
-function chunkArrayInGroups1(arr, size) {
+function chunkArrayInGroups1(arr: any, size: number) {
   let temp = [];
   const result = [];
 
@@ -26,9 +26,9 @@ function chunkArrayInGroups1(arr, size) {
 }
 
 //2ª solução do site. SLICE   
-function chunkArrayInGroups2(arr, size) {
+function chunkArrayInGroups2(arr: any, size: number) {
   const newArr = [];
-  for (let i = 0; i < arr.length; i+=size) { //loop infinito caso i++
+  for (let i = 0; i < arr.length; i += size) { //loop infinito caso i++
     newArr.push(arr.slice(i, i + size)); //diferente do SPLICE. SLICE não modifica o array original.
   }
   return newArr;
@@ -37,7 +37,7 @@ function chunkArrayInGroups2(arr, size) {
 //3ª solução do site. Mesma coisa da 2ª utilizando laço WHILE.
 
 //4ª solução do site. SPLICE.
-function chunkArrayInGroups4(arr, size) {
+function chunkArrayInGroups4(arr: any, size: number) {
   const newArr = [];
   while (arr.length > 0) {
     newArr.push(arr.splice(0, size));
@@ -46,16 +46,17 @@ function chunkArrayInGroups4(arr, size) {
 }
 
 //5ª solução do site. Mais complexa com recursividade. Manuntenção?
-function chunkArrayInGroups5(arr, size) {
+function chunkArrayInGroups5(arr: any, size: number): any {
   if (arr.length <= size) {
     return [arr];
+
   } else {
     return [arr.slice(0, size)].concat(
-      chunkArrayInGroups(arr.slice(size), size)
+      chunkArrayInGroups5(arr.slice(size), size)
     );
   }
 }
 
-module.exports = {
+export {
   dividirAgruparArrays
 };

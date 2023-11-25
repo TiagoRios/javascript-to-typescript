@@ -1,4 +1,4 @@
-const { removerFalsos } = require('./13-remover-falsos.js');
+import { removerFalsos } from './13-remover-falsos';
 
 let arrComTrue = ["a", "b", "c"];
 let arrComFalse = [false, null, 0, NaN, undefined, ""];

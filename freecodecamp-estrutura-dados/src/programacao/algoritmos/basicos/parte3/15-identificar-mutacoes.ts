@@ -1,4 +1,4 @@
-function identificarMutacoes(arr){
+function identificarMutacoes(arr: string[]) {
   let primeiroElemento = arr[0].toUpperCase();
   let segundoElemento = arr[1].toUpperCase();
 
@@ -7,23 +7,24 @@ function identificarMutacoes(arr){
       return false;
     }
   }
+
   return true;
 }
 
 //1ª solução do site. Parecida com a minha.
 
 //2ª solução do site.
-function mutation2(arr) {
+function mutation2(arr: string[]) {
   return arr[1]
-  .toLowerCase()
-  .split("")
-  .every(function(letter) {
-    return arr[0].toLowerCase().indexOf(letter) !== -1;
-  });
+    .toLowerCase()
+    .split("")
+    .every(function (letter) {
+      return arr[0].toLowerCase().indexOf(letter) !== -1;
+    });
 }
 
 //3ª solução do site. Operador ternario aninhados dificil manutenção. problemas no Lint
 
-module.exports = {
+export {
   identificarMutacoes
 };

@@ -1,26 +1,29 @@
-function encontrarIndexParaInserir(arr, num){
+function encontrarIndexParaInserir(arr: number[], num: number) {
   let copiaArr = [...arr]; // fazer operações em uma copia do array.
   copiaArr.splice(0, 0, num); // splice modifica o array original.
-  copiaArr.sort((a, b) => a - b );
+  copiaArr.sort((a, b) => a - b);
+
   return copiaArr.indexOf(num);
 }
 
 //1ª solução do site.
-function getIndexToIns1(arr, num) {
+function getIndexToIns1(arr: number[], num: number) {
   arr.sort((a, b) => a - b);
+
   for (let i = 0; i < arr.length; i++) {
     if (arr[i] >= num) return i;
   }
+
   return arr.length;
 }
 
 //2ª solução do site.
-function getIndexToIns2(arr, num) {
+function getIndexToIns2(arr: number[], num: number) {
   return arr.filter(val => num > val).length;
 }
 
 //3ª solução do site.
-function getIndexToIns3(arr, num) {
+function getIndexToIns3(arr: number[], num: number) {
   // sort and find right index
   let index = arr
     .sort((curr, next) => curr - next)
@@ -30,13 +33,13 @@ function getIndexToIns3(arr, num) {
 }
 
 //4ª solução do site. Parecido com a minha.
-function getIndexToIns4(arr, num) {
+function getIndexToIns4(arr: number[], num: number) {
   return arr
     .concat(num) // não modifica o array original.
     .sort((a, b) => a - b)
     .indexOf(num);
 }
 
-module.exports = {
+export {
   encontrarIndexParaInserir,
 };
