@@ -1,8 +1,8 @@
-const {countdown, countdownSolucaoSite, preencherArrayDecrescente} = require('./countdown.js');
+import { countdown, preencherArrayDecrescente } from './countdown';
 
 const MIN = 1;
-let numeroAleatorio; 
-let arrayPreenchidoSemRecursividade;
+let numeroAleatorio: number;
+let arrayPreenchidoSemRecursividade: number[];
 
 beforeAll(() => {
   numeroAleatorio = Math.floor(Math.random() * 100) + MIN; //Numero aleatoria de 1-100
@@ -17,13 +17,13 @@ describe('Deve realizar contagem regressiva utilizando recursao', () => {
     expect(countdown(numeroAleatorio)[0]).toBe(numeroAleatorio);
   });
   test('Deve retonar ultimo valor', () => {
-    expect(countdown(numeroAleatorio)[numeroAleatorio -1 ]).toBe(1);
+    expect(countdown(numeroAleatorio)[numeroAleatorio - 1]).toBe(1);
   });
   test('Deve retonar array regressivo', () => {
     expect(countdown(numeroAleatorio)).toEqual(arrayPreenchidoSemRecursividade);
   });
   test('Arrays devem ser diferentes', () => {
-    expect(countdown(numeroAleatorio)).not.toEqual([2,6,3]);
+    expect(countdown(numeroAleatorio)).not.toEqual([2, 6, 3]);
   });
   test('Array deve ter seu length igual ao numeroAleatorio', () => {
     expect(countdown(numeroAleatorio)).toHaveLength(numeroAleatorio);
