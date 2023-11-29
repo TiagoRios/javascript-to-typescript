@@ -11,7 +11,7 @@
  * @returns Array com os elementos não presentes no outro array 
  */
 //1ª solução do site - Melhorada.
-function diffArray(arr1, arr2) {
+function diffArray(arr1: any, arr2: any) {
   const newArr = [];
   //Arrays mesclados com atribuição de desestruturação. MASSA Demais!
   for (const element of [...arr1, ...arr2]) {
@@ -29,23 +29,23 @@ function diffArray(arr1, arr2) {
    ================================================== */
 
 //2ª solução do site.
-function diffArray2(arr1, arr2) {
+function diffArray2(arr1: any, arr2: any) {
   return arr1
     .concat(arr2)
-    .filter(a => !arr1.includes(a) || !arr2.includes(a));
+    .filter((a: any) => !arr1.includes(a) || !arr2.includes(a));
 }
 
 //3ª solução do site. Variação da solução 2.
 
 //4ª solução do site.
-function diffArray4(arr1, arr2) {
+function diffArray4(arr1: any, arr2: any) {
   const difference = new Set(arr1);
-  arr2.forEach((ele) =>
+  arr2.forEach((ele: any) =>
     difference.has(ele) ? difference.delete(ele) : difference.add(ele)
   );
   return Array.from(difference);
 }
 
-module.exports = {
+export {
   diffArray
 }

@@ -1,4 +1,4 @@
-const { spinalCase } = require('./05-spinalCase.js');
+import { spinalCase } from './05-spinalCase';
 
 describe('Deve retornar uma string Hifenizada quando palavras', () => {
   test('Separadas por espaços', () => {

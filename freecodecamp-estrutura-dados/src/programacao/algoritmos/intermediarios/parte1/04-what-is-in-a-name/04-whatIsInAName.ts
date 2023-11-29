@@ -14,12 +14,12 @@
  */
 
 //Variação da 2ª solução.
-function whatIsInAName(collection, source) {
+function whatIsInAName(collection: any, source: any) {
   const arr = [];
   const chavesObjSource = Object.keys(source);
 
   arr.push(...collection
-    .filter(cadaObjetoCollection => chavesObjSource
+    .filter((cadaObjetoCollection: any) => chavesObjSource
       .every(nomeCadaChaveObjSource => cadaObjetoCollection.hasOwnProperty(nomeCadaChaveObjSource) // Possui a propriedade ?
         && cadaObjetoCollection[nomeCadaChaveObjSource] === source[nomeCadaChaveObjSource]))) //Chaves iguais ?
   return arr;
@@ -31,11 +31,11 @@ function whatIsInAName(collection, source) {
 
 //Parcial DECLARATIVA/IMPERATIVO
 //1ª solução do site. FILTER.
-function whatIsInAName1(collection, source) {
+function whatIsInAName1(collection: any, source: any) {
   const souceKeys = Object.keys(source);
 
   //Consigo fazer laços dentro do filter
-  return collection.filter(cadaObjetoCollection => {
+  return collection.filter((cadaObjetoCollection: any) => {
     for (const nomeChaveCadaObj of souceKeys) {
       if (!cadaObjetoCollection.hasOwnProperty(nomeChaveCadaObj) ||
         cadaObjetoCollection[nomeChaveCadaObj] !== source[nomeChaveCadaObj]) {
@@ -48,28 +48,28 @@ function whatIsInAName1(collection, source) {
 
 //DECLARATIVA
 //2ª solução do site. Usando FILTER, EVERY.
-function whatIsInAName2(collection, source) {
+function whatIsInAName2(collection: any, source: any) {
   const sourceKeys = Object.keys(source);
 
   return collection
-    .filter(cadaObjetoCollection => sourceKeys
+    .filter((cadaObjetoCollection: any) => sourceKeys
       .every(nomeCadaChaveObjSource => cadaObjetoCollection.hasOwnProperty(nomeCadaChaveObjSource)
         && cadaObjetoCollection[nomeCadaChaveObjSource] === source[nomeCadaChaveObjSource]));
 }
 
 //DECLARATIVA
 //3ª solução do site. Usando FILTER, MAP e REDUCE.
-function whatIsInAName3(collection, source) {
+function whatIsInAName3(collection: string[], source: any) {
   const souceKeys = Object.keys(source);
 
-  return collection.filter(obj => souceKeys
+  return collection.filter((obj: any) => souceKeys
     .map(key => obj.hasOwnProperty(key) && obj[key] === source[key])
     .reduce((a, b) => a && b));
 }
 
 //IMPERATIVA
 //4ª solução do site.
-function whatIsInAName4(collection, source) {
+function whatIsInAName4(collection: any, source: any) {
   const arr = [];
 
   for (const element of collection) {
@@ -85,6 +85,6 @@ function whatIsInAName4(collection, source) {
   return arr;
 }
 
-module.exports = {
+export {
   whatIsInAName
 }

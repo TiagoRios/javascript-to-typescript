@@ -1,8 +1,9 @@
-const { sumAll } = require('./01-sumAll.js');
+import { sumAll } from './01-sumAll';
 
 test('Deve retornar um número', () => {
   expect(typeof sumAll([1, 4])).toEqual('number');
 })
+
 describe('Deve retornar a soma de um intervalo de números', () => {
   test('Ordem crescente', () => {
     expect(sumAll([1, 4])).toEqual(10);

@@ -1,4 +1,4 @@
-const { whatIsInAName } = require('./04-whatIsInAName.js');
+import { whatIsInAName } from './04-whatIsInAName';
 
 describe('Deve retornar', () => {
   test('Array', () => {

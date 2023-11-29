@@ -1,4 +1,4 @@
-const { destroyer } = require('./03-destroyer.js');
+import { destroyer3 as destroyer } from './03-destroyer';
 
 test('Deve retornar um Array', () => {
   expect(Array.isArray(destroyer([1, 'a', 'bc'], 'a', 1))).toEqual(true);

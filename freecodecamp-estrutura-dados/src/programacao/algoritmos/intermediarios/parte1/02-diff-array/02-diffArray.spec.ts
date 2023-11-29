@@ -1,4 +1,4 @@
-const { diffArray } = require('./02-diffArray.js');
+import { diffArray } from './02-diffArray';
 
 describe('Deve retornar um Array', () => {
   test('', () => {
