@@ -1,10 +1,10 @@
-const { myReplace } = require('./07-myReplace.js');
+import { myReplace } from './07-myReplace';
 
 describe('Deve procurar e substituir', () => {
   test('"store" por "mail" - Retornar string: Let us go to the mall', () => {
     expect(myReplace("Let us go to the store", "store", "mall"))
       .toEqual('Let us go to the mall');
-  }) 
+  })
   test('"Sleeping" por "Sitting" - Retornar string: He is Sitting on the couch', () => {
     expect(myReplace("He is Sleeping on the couch", "Sleeping", "sitting"))
       .toEqual('He is Sitting on the couch');

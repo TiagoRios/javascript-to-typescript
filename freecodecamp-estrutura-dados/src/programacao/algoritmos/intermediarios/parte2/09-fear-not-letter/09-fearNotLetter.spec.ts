@@ -1,28 +1,28 @@
-const { fearNotLetter, fearNotLetter2, fearNotLetter3 } = require('./09-fearNotLetter.js')
+import { fearNotLetter1, fearNotLetter2, fearNotLetter3 } from './09-fearNotLetter'
 
 describe('fearNotLetter solução 1', () => {
   test('Deve retornar string d', () => {
-    expect(fearNotLetter("abce"))
+    expect(fearNotLetter1("abce"))
       .toEqual('d');
   })
   test('Deve retornar string d - faltando mais letras', () => {
-    expect(fearNotLetter("abcf"))
+    expect(fearNotLetter1("abcf"))
       .toEqual('d');
   })
   test('Deve retornar string i', () => {
-    expect(fearNotLetter("abcdefghjklmno"))
+    expect(fearNotLetter1("abcdefghjklmno"))
       .toEqual('i');
   })
   test('Deve retornar string u', () => {
-    expect(fearNotLetter("stvwx"))
+    expect(fearNotLetter1("stvwx"))
       .toEqual('u');
   })
   test('Deve retornar string e', () => {
-    expect(fearNotLetter("bcdf"))
+    expect(fearNotLetter1("bcdf"))
       .toEqual('e');
   })
   test('Deve retornar undefined', () => {
-    expect(fearNotLetter("abcdefghijklmnopqrstuvwxyz"))
+    expect(fearNotLetter1("abcdefghijklmnopqrstuvwxyz"))
       .toEqual(undefined);
   })
 })

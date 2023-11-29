@@ -5,17 +5,19 @@
  * @returns {String} String da letra que falta ou undefined;
  */
 //1ª solução do site.
-function fearNotLetter1(str) {
+function fearNotLetter1(str: string) {
   for (let i = 0; i < str.length; i++) {
+
     if (str.charCodeAt(i) !== str.charCodeAt(0) + i) {
       return String.fromCharCode(str.charCodeAt(i - 1) + 1);
     }
   }
+
   return undefined;
 }
 
 //2ª solução do site.
-function fearNotLetter2(str) {
+function fearNotLetter2(str: string) {
   let currCharCode = str.charCodeAt(0);
   let missing = undefined;
 
@@ -24,6 +26,7 @@ function fearNotLetter2(str) {
     .forEach(letter => {
       if (letter.charCodeAt(0) === currCharCode) {
         currCharCode++;
+
       } else {
         missing = String.fromCharCode(currCharCode);
       }
@@ -33,17 +36,19 @@ function fearNotLetter2(str) {
 }
 
 //3ª solução do site.
-function fearNotLetter3(str) {
+function fearNotLetter3(str: string) {
   for (let i = 0; i < str.length; ++i) {
+
     if (str.charCodeAt(i + 1) - str.charCodeAt(i) > 1) {//diferença de codigos maior que 1.
       return String.fromCharCode(str.charCodeAt(i) + 1);
     }
   }
+
   return undefined;
 }
 
-module.exports = {
-  fearNotLetter: fearNotLetter1,
+export {
+  fearNotLetter1,
   fearNotLetter2,
   fearNotLetter3
 }

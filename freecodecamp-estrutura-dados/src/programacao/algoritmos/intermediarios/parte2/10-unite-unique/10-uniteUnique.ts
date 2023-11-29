@@ -6,9 +6,9 @@
  */
 //igual a solução 4. Primeiro tentei usar concat. mas dava errado.
 //MDN método .flat() = cria novo array com todos elementos dos sub-arrays
-function uniteUnique(...arr) {
+function uniteUnique(...arr: any) {
   return arr.flat()
-    .filter((elem, pos, arr) => arr.indexOf(elem) == pos)
+    .filter((elem: any, pos: number, arr: any) => arr.indexOf(elem) == pos)
 }
 
 /* ==================================================
@@ -17,21 +17,25 @@ function uniteUnique(...arr) {
 
 //1ª solução do site. igual a segunda. Utiliza .indexOf()
 //Depois de remover as variáveis inuteis.
-function uniteUnique1(arr1, arr2, arr3) {
+function uniteUnique1(arr1: any, arr2: any, arr3: any) {
   const result = [];
+
   for (const arrays of arguments) {
     for (const elementosArray of arrays) {
+
       if (result.indexOf(elementosArray) < 0) {
         result.push(elementosArray);
       }
     }
   }
+
   return result;
 }
 
 //2ª solução do site. igual a primeira. Utiliza .includes()
-function uniteUnique2(arr) {
-  const result = [];
+function uniteUnique2(arr: any) {
+  const result: any = [];
+
   for (const arrays of arguments) {
     for (const elementosArray of arrays) {
       if (!result.includes(elementosArray)) {
@@ -39,21 +43,22 @@ function uniteUnique2(arr) {
       }
     }
   }
+
   return result;
 }
 
 //3ª solução do site. Top!
-function uniteUnique3(...arr) {
+function uniteUnique3(...arr: any) {
   return [...new Set(arr.flat())];
 }
 
 //4ª solução do site. parecida com a minha.
-function uniteUnique4(arr) {
+function uniteUnique4(arr: any) {
   return [...arguments]
     .flat()
     .filter((item, ind, arr) => arr.indexOf(item) === ind);
 }
 
-module.exports = {
+export {
   uniteUnique
 }

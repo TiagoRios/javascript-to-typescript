@@ -8,12 +8,15 @@
  * @param {String} after string que substituirá a procura.
  * @returns String com a substituição.
  */
-function myReplace(str, before, after) {
+function myReplace(str: string, before: string, after: string) {
+
   if (before[0].match(/[a-z]/)) {
     after = after[0].toLowerCase() + after.substring(1);
+
   } else {
     after = after[0].toUpperCase() + after.substring(1);
   }
+
   return str.replace(before, after);
 }
 
@@ -22,81 +25,98 @@ function myReplace(str, before, after) {
    ================================================== */
 
 //1ª solução do site. Parecida com a minha. utiliza
-function myReplace1(str, before, after) {
+function myReplace1(str: string, before: string, after: string) {
   let index = str.indexOf(before);
+
   if (str[index] === str[index].toUpperCase()) {
     after = after.charAt(0).toUpperCase() + after.slice(1);
+
   } else {
     after = after.charAt(0).toLowerCase() + after.slice(1);
   }
+
   return str.replace(before, after);
 }
 
 //2ª solução do site. parecida com a minha. seu if = /^[A-Z]/.test(before)
 
 //3ª solução do site. Díficil de realizar manutenção.
-function myReplace3(str, before, after) {
-  function applyCasing(source, target) {
+function myReplace3(str: string, before: string, after: string) {
+  function applyCasing(source: any, target: any) {
     let targetArr = target.split("");
     let sourceArr = source.split("");
+
     for (let i = 0; i < Math.min(targetArr.length, sourceArr.length); i++) {
       if (/[A-Z]/.test(sourceArr[i])) {
         targetArr[i] = targetArr[i].toUpperCase();
-      }
-      else targetArr[i] = targetArr[i].toLowerCase();
+
+      } else
+        targetArr[i] = targetArr[i].toLowerCase();
     }
+
     return targetArr.join("");
   }
+
   return str.replace(before, applyCasing(before, after));
 }
 
 //4ª solução do site. Díficil de realizar manutenção.
-//Tomar no seu c#, filho da p#$@, pra que isso zé bu#$!@.
+//Tomar no seu c#.
 //Um cara desse que gosta de complicar as coisas.
 
+// Em typescript ele reclama. pois esta modificando um tipo interno da linguagem
+
 // Add new method to the String object, not overriding it if one exists already
-String.prototype.capitalize =
-  String.prototype.capitalize ||
-  function () {
-    return this[0].toUpperCase() + this.slice(1);
-  };
+// String.prototype.capitalize =
+//   String.prototype.capitalize ||
+//   function () {
+//     return this[0].toUpperCase() + this.slice(1);
+//   };
 
 const Util = (() => {
   // Create utility module to hold helper functions
-  function textCase(str, tCase) {
+  function textCase(str: string, tCase?: string) {
     // Depending if the tCase argument is passed we either set the case of the
     // given string or we get it.
     // Those functions can be expanded for other text cases.
 
     if (tCase) {
       return setCase(str, tCase);
+
     } else {
       return getCase(str);
     }
 
-    function setCase(str, tCase) {
+    function setCase(str: string, tCase: string) {
       switch (tCase) {
         case "uppercase":
           return str.toUpperCase();
+
         case "lowercase":
           return str.toLowerCase();
+
         case "capitalized":
-          return str.capitalize();
+          // return str.capitalize(); // TS não aceita modificar tipos de dados internos
+          return str[0].toUpperCase() + str.slice(1)
+
         default:
           return str;
       }
     }
 
-    function getCase(str) {
+    function getCase(str: string) {
       if (str === str.toUpperCase()) {
         return "uppercase";
       }
+
       if (str === str.toLowerCase()) {
         return "lowercase";
       }
-      if (str === str.capitalize()) {
+      // if (str === str.capitalize()) { // TS não aceita modificar tipos de dados internos
+      if (str === (str[0].toUpperCase() + str.slice(1))) {
         return "capitalized";
       }
+
       return "normal";
     }
   }
@@ -106,7 +126,7 @@ const Util = (() => {
   };
 })();
 
-function myReplace4(str, before, after) {
+function myReplace4(str: string, before: string, after: string) {
   const { textCase } = Util;
   const regex = new RegExp(before, "gi");
   const replacingStr = textCase(after, textCase(before));
@@ -115,13 +135,14 @@ function myReplace4(str, before, after) {
 }
 
 //5ª solução do site. Utilizando ternarios
-function myReplace5(str, before, after) {
+function myReplace5(str: string, before: string, after: string) {
   const strArr = str.split(" "); //transforma array de strings
   const [wordToReplace] = strArr.filter(item => item === before); //filtra até encontrar o que substituir
   //ternário. Verificar se capitaliza ou descapitaliza primeira letra.
   const replacement = wordToReplace[0] === wordToReplace[0].toUpperCase()
     ? after[0].toUpperCase() + after.slice(1)
     : after[0].toLowerCase() + after.slice(1);
+
   return strArr
     .map(item => (item === before
       ? replacement //substitui se o elemento é igual ao pesquisado. 
@@ -129,6 +150,6 @@ function myReplace5(str, before, after) {
     .join(" ");//transforma o Array em uma string novamente.
 }
 
-module.exports = {
+export {
   myReplace
 }

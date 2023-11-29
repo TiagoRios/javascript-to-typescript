@@ -1,4 +1,8 @@
-const { translatePigLatin } = require('./06-translatePigLatin.js');
+import { translatePigLatin } from './06-translatePigLatin';
+
+// melhorias
+// quando passar caracteres especiais
+// quando passar string vázia
 
 describe('Deve traduzir para o Pig Latin e retornar', () => {
   test('String aliforniacay', () => {
