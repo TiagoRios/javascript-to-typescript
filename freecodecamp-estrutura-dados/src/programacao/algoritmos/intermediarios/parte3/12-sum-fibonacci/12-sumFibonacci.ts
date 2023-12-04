@@ -6,24 +6,27 @@
  * @returns soma dos números impares.
  */
 //1ª Solução do site.
-function sumFibonacci(num) {
+function sumFibonacci(num: number) {
   if (num < 1) return 0;
 
   let prevNumber = 0;
   let currNumber = 1;
   let result = 0;
+ 
   while (currNumber <= num) {
     if (currNumber % 2 !== 0) {
       result += currNumber;
     }
+
     currNumber += prevNumber;
     prevNumber = currNumber - prevNumber;
   }
+
   return result;
 }
 
 //Retorna array com fibonacci's
-function fibonacci(num) {
+function fibonacci(num: number) {
   if (num < 1)
     return [];
 
@@ -38,11 +41,12 @@ function fibonacci(num) {
   }
   //senão, não aparece o próximo da sequência.
   arr.push(prevNumber);
+
   return arr;
 }
 
 //2ª Solução do site.
-function sumFibs2(num) {
+function sumFibs2(num: number) {
   // Perform checks for the validity of the input
   if (num <= 0) return 0;
 
@@ -61,22 +65,25 @@ function sumFibs2(num) {
 }
 
 //3ª Solução do site. Difícil de manutenção.
-function sumFibs3(num) {
+function sumFibs3(num: number) {
   let f0 = 0;
   let f1 = 1;
   let f2 = 1;
 
   let sum = 0;
+ 
   while (f1 <= num) {
     sum += f1;
+
     if (f2 <= num) sum += f2;
 
     [f0, f1] = [f1 + f2, f2 + (f1 + f2)];
     f2 = f0 + f1;
   }
+ 
   return sum;
 }
 
-module.exports = {
+export {
   sumFibonacci
 }

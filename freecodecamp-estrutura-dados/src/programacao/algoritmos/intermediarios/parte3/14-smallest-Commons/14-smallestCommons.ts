@@ -12,27 +12,32 @@
 //Está solução não passa no site. potêncial infinito.
 //Aqui funciona.
 //Solução ruim. muitos ciclos de processamento.
-function smallestCommonsRuim(arr) {
+function smallestCommonsRuim(arr: number[]) {
   let arrayOrdenado = [...arr].sort((a, b) => a - b);
   let menorNumero = arrayOrdenado[0];
   let maiorNumero = arrayOrdenado[arrayOrdenado.length - 1];
   let valorRetorno = 0;
 
   let maiorTemporario = maiorNumero;
+
   while (maiorTemporario > valorRetorno) { // potêncial infinito.
     if (valorRetorno == (maiorTemporario - 1)) {
-      return valorRetorno; 
+      return valorRetorno;
     }
+
     for (let j = menorNumero; j <= maiorNumero; j++) {
       if (maiorTemporario % j == 0 && maiorTemporario % maiorNumero == 0) {
         valorRetorno = maiorTemporario;
+
       } else {
         valorRetorno = 0;
         break;
       }
     } //for
+
     maiorTemporario++;
   } //while
+
   return valorRetorno;
 }
 
@@ -43,12 +48,13 @@ function smallestCommonsRuim(arr) {
 // The upper bound for this loop is the product of all values in 
 // the provided range, because this number will be divisible by 
 // every value in the range.
-function smallestCommons1(arr) {
+function smallestCommons1(arr: number[]) {
   // Setup
   const [min, max] = arr.sort((a, b) => a - b);
   const numberDivisors = max - min + 1;
   // Largest possible value for SCM
   let upperBound = 1;
+
   for (let i = min; i <= max; i++) {
     upperBound *= i;
   }
@@ -56,12 +62,14 @@ function smallestCommons1(arr) {
   for (let multiple = max; multiple <= upperBound; multiple += max) {
     // Check if every value in range divides 'multiple'
     let divisorCount = 0;
+
     for (let i = min; i <= max; i++) {
       // Count divisors
       if (multiple % i === 0) {
         divisorCount += 1;
       }
     } //for
+
     if (divisorCount === numberDivisors) {
       return multiple;
     }
@@ -70,7 +78,7 @@ function smallestCommons1(arr) {
 
 // 2ª solução do site. Mesma coisa da solução 1. utilizando programação funcional.
 //This solution uses ES6 syntax to condense the logic in Solution 1.
-function smallestCommons2(arr) {
+function smallestCommons2(arr: number[]) {
   // Setup
   const [min, max] = arr.sort((a, b) => a - b);
   const range = Array(max - min + 1)
@@ -82,6 +90,7 @@ function smallestCommons2(arr) {
   for (let multiple = max; multiple <= upperBound; multiple += max) {
     // Check if every value in range divides 'multiple'
     const divisible = range.every((value) => multiple % value === 0);
+
     if (divisible) {
       return multiple;
     }
@@ -92,7 +101,7 @@ function smallestCommons2(arr) {
 // This solution uses formulae and algorithms for the Greatest Common Divisor and
 // Least Common Multiple off of Wikipedia to compactly and quickly compute 
 // the Smallest Common Multiple.
-function smallestCommons(arr) {
+function smallestCommons(arr: number[]) {
   // Setup
   const [min, max] = arr.sort((a, b) => a - b);
   const range = Array(max - min + 1)
@@ -100,10 +109,10 @@ function smallestCommons(arr) {
     .map((_, i) => i + min);
   // GCD of two numbers
   // https://en.wikipedia.org/wiki/Greatest_common_divisor#Euclid's_algorithm
-  const gcd = (a, b) => (b === 0) ? a : gcd(b, a % b);
+  const gcd: any = (a: number, b: number) => (b === 0) ? a : gcd(b, a % b);
   // LCM of two numbers
   // https://en.wikipedia.org/wiki/Least_common_multiple#Using_the_greatest_common_divisor
-  const lcm = (a, b) => a * b / gcd(a, b);
+  const lcm = (a: any, b: any) => a * b / gcd(a, b);
   // LCM of multiple numbers
   // https://en.wikipedia.org/wiki/Least_common_multiple#Other
   return range.reduce((multiple, curr) => lcm(multiple, curr));
@@ -115,12 +124,15 @@ function smallestCommons(arr) {
 // In general, Solution 3 is much faster, but with a very large range 
 // or very large values, sometimes Solution 3 may trigger a 
 // recursion limit in some browsers.
-function smallestCommons4(arr) {
-  const primeFactors = {};
+function smallestCommons4(arr: number[]) {
+  const primeFactors: any = {};
+
   const [min, max] = arr.sort((a, b) => a - b);
+
   for (let i = min; i <= max; i++) {
     // Factorize number in range
-    const currentFactors = getPrimeFactors(i); // 
+    const currentFactors: any = getPrimeFactors(i); // 
+
     for (let prime in currentFactors) {
       // Add factor to set or update number of occurrences
       if (!primeFactors[prime] || currentFactors[prime] > primeFactors[prime]) {
@@ -130,15 +142,23 @@ function smallestCommons4(arr) {
   }
   // Build SCM from factorization
   let multiple = 1;
-  for (let prime in primeFactors) {
+
+  primeFactors.array.forEach((prime: any) => {
     multiple *= prime ** primeFactors[prime];
-  }
+  })
+
   return multiple;
 }
 
+//tentei usar no getPrimeFactors
+type meuTipo = {
+  a?: string,
+  b?: number
+}
+
 // Compute prime factors of a number
-function getPrimeFactors(num) {
-  const factors = {};
+function getPrimeFactors(num: number) {
+  let factors: any = {};
   for (let i = 2; i <= num; i++) {
     // Count occurances of factor
     // Note that composite values will not divide num
@@ -152,6 +172,6 @@ function getPrimeFactors(num) {
 
 // console log(smallestCommons([18, 23]));
 
-module.exports = {
-  smallestCommons: smallestCommonsRuim
+export {
+  smallestCommonsRuim as smallestCommons
 }

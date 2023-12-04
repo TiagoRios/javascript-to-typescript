@@ -7,15 +7,16 @@
  * @param {Function} func callback que define quais elementos devem ser excluidos. 
  * @returns Array filtrado.
  */
-function dropElements(arr, func) {
+function dropElements(arr: any, func: (x: number) => boolean) {
   for (let i = 0; i < arr.length; i++) {
-    if(func(arr[i])){
+    if (func(arr[i])) {
       return arr.slice(i);
-    }      
+    }
   }
+
   return [];
 }
 
-module.exports = {
+export {
   dropElements
 }

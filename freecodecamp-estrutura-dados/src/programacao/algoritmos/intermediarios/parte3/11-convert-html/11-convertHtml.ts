@@ -4,21 +4,26 @@
  * @param {String} str String que será convertida para funcionar em HTML 
  * @returns {String} String com as mudanças
  */
- function convertHTML(str) {
+function convertHTML(str: string) {
   let arrayChar = str.split("");
 
   for (let i = 0; i < arrayChar.length; i++) {
     if (arrayChar[i] == '&')
       arrayChar[i] = "&amp;";
+
     else if (arrayChar[i] == '<')
       arrayChar[i] = "&lt;";
+
     else if (arrayChar[i] == '>')
       arrayChar[i] = "&gt;";
+
     else if (arrayChar[i] == "'")
       arrayChar[i] = "&apos;";
+
     else if (arrayChar[i] == '"')
       arrayChar[i] = "&quot;";
   }
+
   return arrayChar.join("");
 }
 
@@ -27,46 +32,52 @@
    ================================================== */
 
 //1ª Solução do site.
-function convertHTML1(str) {
+function convertHTML1(str: string) {
   let temp = str.split("");
+
   for (let i = 0; i < temp.length; i++) {
     switch (temp[i]) {
       case "<":
         temp[i] = "&lt;";
         break;
+
       case "&":
         temp[i] = "&amp;";
         break;
+
       case ">":
         temp[i] = "&gt;";
         break;
+
       case '"':
         temp[i] = "&quot;";
         break;
+
       case "'":
         temp[i] = "&apos;";
         break;
     }
   }
-  
+
   return temp.join("");
 }
 
 //2ª Solução do site.
-function convertHTML2(str) {
-  const htmlEntities = {
+function convertHTML2(str: string) {
+  const htmlEntities: any = {
     "&": "&amp;",
     "<": "&lt;",
     ">": "&gt;",
     '"': "&quot;",
     "'": "&apos;"
   };
+
   return str.replace(/([&<>"'])/g, match => htmlEntities[match]);
 }
 
 //3ª Solução do site.
-function convertHTML3(str) {
-  const htmlEntities = {
+function convertHTML3(str: string) {
+  const htmlEntities: any = {
     "&": "&amp;",
     "<": "&lt;",
     ">": "&gt;",
@@ -80,6 +91,6 @@ function convertHTML3(str) {
     .join("");
 }
 
-module.exports = {
+export {
   convertHTML
 }
