@@ -1,4 +1,9 @@
-function orbitalPeriod(arr) {
+type tipoPersonalizado = {
+    name: string,
+    avgAlt: number
+}
+
+function orbitalPeriod(arr: tipoPersonalizado[]) {
     const GM = 398600.4418;
     const earthRadius = 6367.4447;
     const arrRetorno = [];
@@ -12,13 +17,13 @@ function orbitalPeriod(arr) {
 }
 
 // 1ª solução do site.
-function orbitalPeriod1(arr) {
+function orbitalPeriod1(arr: tipoPersonalizado[]) {
     const GM = 398600.4418;
     const earthRadius = 6367.4447;
     const a = 2 * Math.PI;
     const newArr = [];
 
-    const getOrbPeriod = function (obj) {
+    const getOrbPeriod = function (obj: tipoPersonalizado) {
         const c = Math.pow(earthRadius + obj.avgAlt, 3);
         const b = Math.sqrt(c / GM);
         const orbPeriod = Math.round(a * b);
@@ -36,35 +41,37 @@ function orbitalPeriod1(arr) {
 // 2ª igual a minha.
 
 // 4ª solução do site.
-function orbitalPeriod4(arr) {
+function orbitalPeriod4(arr: tipoPersonalizado[]) {
     const GM = 398600.4418;
     const earthRadius = 6367.4447;
 
     return arr.map(({ name, avgAlt }) => {
         const earth = earthRadius + avgAlt;
         const orbitalPeriod = Math.round(2 * Math.PI * Math.sqrt(Math.pow(earth, 3) / GM));
+ 
         return { name, orbitalPeriod };
     });
 }
 
 
 // MelBrooksKA, usuário do freecodecamp.
-function orbitalPeriodMelBrooksKA(arr) {
+function orbitalPeriodMelBrooksKA(arr: tipoPersonalizado[]) {
     var GM = 398600.4418;
     var earthRadius = 6367.4447;
 
-    arr.forEach(function (item) {
+    arr.forEach(function (item: any) {
         // Calculate the Orbital period
         //Add orbitalPeriod property
         item.orbitalPeriod = Math.round(2 * Math.PI * Math.sqrt(Math.pow(earthRadius + item.avgAlt, 3) / GM));;
         //Delete the avgAlt property
         delete item.avgAlt;
     });
+
     return arr;
 }
 
 // sfiden72
-function orbitalPeriodSfiden72(arr) {
+function orbitalPeriodSfiden72(arr: tipoPersonalizado[]) {
     var GM = 398600.4418;
     var earthRadius = 6367.4447;
 
@@ -74,6 +81,6 @@ function orbitalPeriodSfiden72(arr) {
     }));
 }
 
-module.exports = {
+export {
     orbitalPeriod
 }

@@ -6,12 +6,12 @@
  * @param {*} pre o que estou procurando. 
  * @returns true se verdadeiro, senão falso
  */
-function truthCheck(collection, pre) {
-    return collection.every(x => x[pre]);
+function truthCheck(collection: any, pre: any) {
+    return collection.every((x: any) => x[pre]);
 }
 
 // 1ª solução do Site.
-function truthCheck1(collection, pre) {
+function truthCheck1(collection: any, pre: any) {
     // Create a counter to check how many are true.
     let counter = 0;
     // Check for each object
@@ -26,20 +26,20 @@ function truthCheck1(collection, pre) {
 }
 
 // 2ª solução do Site.
-function truthCheck2(collection, pre) {
-    return collection.every((e) => e.hasOwnProperty(pre) && Boolean(e[pre]));
+function truthCheck2(collection: any, pre: any) {
+    return collection.every((e: any) => e.hasOwnProperty(pre) && Boolean(e[pre]));
 }
 
 // 3ª solução do site usando every.
 
 
 // Anupammajhi, usuário do freecodecamp. 
-function truthCheckReduce(collection, pre) {
-    return collection.reduce((x, y) => Boolean(x && y[pre]), true);
+function truthCheckReduce(collection: any, pre: any) {
+    return collection.reduce((x: any, y: any) => Boolean(x && y[pre]), true);
 }
 
 // Tonystaark, usuário do freecodecamp.
-function truthCheckTonystaark(collection, pre) {
+function truthCheckTonystaark(collection: any, pre: any) {
     for (var obj of arguments[0]) {
         if (!obj[arguments[1]]) {
             return false;
@@ -53,6 +53,6 @@ let a = [
     { name: "Togepi", number: 45, caught: 1 }
 ];
 
-module.exports = {
+export {
     truthCheck
 }

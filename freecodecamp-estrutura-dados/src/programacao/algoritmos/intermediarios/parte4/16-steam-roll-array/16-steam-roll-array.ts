@@ -4,37 +4,40 @@
  * @param {Array} arr O array que contém arrays internos.
  * @returns Um array sem arrays internos.
  */
-function steamrollArray(arr) {
-    let arrRetorno = [];
+function steamrollArray(arr: any[]) {
+    let arrRetorno: any[] = [];
     arr.forEach(x => Array.isArray(x) ? arrRetorno.push(...steamrollArray(x)) : arrRetorno.push(x));
+
     return arrRetorno;
 }
 
 // 1ª solução do site.
-function steamrollArray1(arr) {
+function steamrollArray1(arr: any[]): any {
     const flattenedArray = [];
     // Loop over array contents
     for (let i = 0; i < arr.length; i++) {
         if (Array.isArray(arr[i])) {
             // Recursively flatten entries that are arrays
             //  and push into the flattenedArray
-            flattenedArray.push(...steamrollArray(arr[i]));
+            flattenedArray.push(...steamrollArray1(arr[i]));
         } else {
             // Copy contents that are not arrays
             flattenedArray.push(arr[i]);
         }
     }
+
     return flattenedArray;
 };
 
 // 2ª solução do site.
-function steamrollArray2(arr) {
+function steamrollArray2(arr: any[]) {
     const flat = [].concat(...arr);
+
     return flat.some(Array.isArray) ? steamrollArray(flat) : flat;
 }
 
 // 3ª solução do site.
-function steamrollArray3(arr) {
+function steamrollArray3(arr: any[]) {
     return arr
         .toString()
         .replace(",,", ",") // "1,2,,3" => "1,2,3"
@@ -43,7 +46,7 @@ function steamrollArray3(arr) {
             if (v == "[object Object]") {
                 // bring back empty objects
                 return {};
-            } else if (isNaN(v)) {
+            } else if (isNaN(Number(v))) {
                 // if not a number (string)
                 return v;
             } else {
@@ -52,6 +55,7 @@ function steamrollArray3(arr) {
         });
 }
 
-module.exports = {
-    steamrollArray
+export {
+    steamrollArray,
+    steamrollArray1
 }

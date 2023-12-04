@@ -4,9 +4,9 @@
  * @returns A soma se for passado dois argumentos, uma função se 
  * for passado apenas um argumento, undefined se não for número válido.
  */
-function addTogether() {
+function addTogether(...args: any) {
     if (arguments.length === 1 && Number.isInteger(arguments[0])) {
-        return (x) => {
+        return (x: number) => {
             if (Number.isInteger(x)) return arguments[0] + x;
         }
     } else if (arguments.length === 2 && Number.isInteger(arguments[0]) && Number.isInteger(arguments[1])) {
@@ -19,12 +19,12 @@ function addTogether() {
 /* As soluçãoes do site não funcionam nos meus testes. */
 
 // 1ª solução do site.
-function addTogether1() {
+function addTogether1(...args: any) {
     const [first, second] = arguments;
 
     if (typeof (first) === "number") {
         if (typeof (second) === "number") return first + second;
-        if (arguments.length === 1) return (second) => addTogether(first, second);
+        if (arguments.length === 1) return (second: any) => addTogether1(first, second);
     }
 }
 
@@ -38,7 +38,7 @@ function addTogether2() {
     // First argument is a number
     //  and second argument is not defined
     else if (arguments.length === 1) {
-        function addSecond(second) {
+        function addSecond(second: any) {
             // New argument is not a number
             if (typeof (second) !== "number") {
                 return undefined;
@@ -68,7 +68,7 @@ function addTogether2() {
 function addTogether3() {
     const [first, second] = arguments;
 
-    function addSecond(second) {
+    function addSecond(second: any) {
         if (typeof (second) === "number") return first + second;
     }
 
@@ -78,6 +78,6 @@ function addTogether3() {
     }
 }
 
-module.exports = {
+export {
     addTogether
 }

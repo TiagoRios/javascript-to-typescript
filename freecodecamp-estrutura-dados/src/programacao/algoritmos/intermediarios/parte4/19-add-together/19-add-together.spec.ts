@@ -1,4 +1,4 @@
-const { addTogether } = require('./19-add-together');
+import { addTogether } from './19-add-together';
 
 test('deve retornar 5', () => {
   expect(addTogether(2, 3))
@@ -27,7 +27,7 @@ test('deve retornar undefined - Quando String', () => {
 
 test('deve retornar uma função', () => {
   expect(typeof (addTogether(5)))
-  .toEqual("function");
+    .toEqual("function");
 })
 
 test('deve retornar 12', () => {

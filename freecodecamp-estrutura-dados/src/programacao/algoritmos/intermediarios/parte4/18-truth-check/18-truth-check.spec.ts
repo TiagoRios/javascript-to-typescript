@@ -1,4 +1,4 @@
-const { truthCheck } = require('./18-truth-check');
+import { truthCheck } from './18-truth-check';
 
 test('deve retornar false - Quando comparar true e false', () => {
   expect(truthCheck([
