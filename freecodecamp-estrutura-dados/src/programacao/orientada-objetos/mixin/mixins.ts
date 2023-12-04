@@ -5,13 +5,13 @@ let aviao = new Aviao();
 let passaro = new PassaroHeranca();
 
 //Usado para objetos não relacionados entre si.
-let voarMixin = function (obj) {
+let voarMixin = function (obj: any) {
     obj.voar = function () {
         return "Voando";
     };
 };
 
-let isVoarMixin = function (obj) {
+let isVoarMixin = function (obj: any) {
     obj.isVoar = function () {
         return true;
     };

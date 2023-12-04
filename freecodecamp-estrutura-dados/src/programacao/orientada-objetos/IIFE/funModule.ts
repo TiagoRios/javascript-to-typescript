@@ -1,12 +1,12 @@
 // IIFE - Expressão de função invocada imediatamente
 let funModule = (function () {
   return {
-    voarMixin: function (obj) {
+    voarMixin: function (obj: any) {
       obj.voar = function () {
         return "Voando";
       };
     },
-    isVoarMixin: function (obj) {
+    isVoarMixin: function (obj: any) {
       obj.isVoar = function () {
         return true;
       };
@@ -14,7 +14,7 @@ let funModule = (function () {
   }
 })();
 
-let obj = new Object();
+let obj: any = new Object;
 
 funModule.voarMixin(obj);
 funModule.isVoarMixin(obj);

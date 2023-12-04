@@ -1,11 +1,10 @@
-const Animal = require('./Animal.js');
-const { PassaroHeranca, PassaroSemHeranca } = require('./Passaro.js');
+import Animal from './Animal';
+import { PassaroHeranca, PassaroSemHeranca } from './Passaro';
 
+let passaroHeranca: any;
+let passaroSemHeranca: any;
 
-let passaroHeranca;
-let passaroSemHeranca;
-
-beforeAll(()=>{
+beforeAll(() => {
   passaroHeranca = new PassaroHeranca();
   passaroSemHeranca = new PassaroSemHeranca();
 });
@@ -47,7 +46,6 @@ describe('passaro com herança', () => {
     expect(passaroHeranca.hasOwnProperty('peso')).toBe(true);
   });
 });
-
 
 describe('passaro SEM herança', () => {
   test('Deve ter constructor igual a PassaroSemHeranca ', () => {
