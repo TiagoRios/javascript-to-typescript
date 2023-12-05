@@ -111,6 +111,6 @@ const watchList = [
     }
 ];
 
-module.exports = {
+export {
     watchList
 }

@@ -1,13 +1,21 @@
-function curriedAdd(x) {
-  return function(y) {
+function curriedAdd(x?: number) {
+  return function (y?: number) {
+    x = x ?? NaN;
+    y = y ?? NaN;
+
     return x + y;
   }
 }
 
-const curriedAdd2 = x => y => x + y;
+const curriedAdd2 = (x?: number) => (y?: number) => {
+  x = x ?? NaN;
+  y = y ?? NaN;
+
+  return x + y;
+}
 
 //Definindo valores default para evitar NaN quando não fornecer algum argumento.
-const curriedAdd3 = (a=0) => (b=0) => (c=0) => (d=0) => a+b+c+d;
+const curriedAdd3 = (a = 0) => (b = 0) => (c = 0) => (d = 0) => a + b + c + d;
 
 test('Deve retornar 3', () => {
   expect(curriedAdd(1)(2)).toEqual(3);

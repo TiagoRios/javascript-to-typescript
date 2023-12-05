@@ -1,9 +1,10 @@
-const { watchList } = require('./watchList.js');
-const { findTitleAndImdbRating,
+import { watchList } from './watchList';
+import {
+    findTitleAndImdbRating,
     findTitleAndImdbRatingComMap,
     findTitleAndImdbRatingComMeuMapLoop,
     findTitleAndImdbRatingComMeuMapForEach
-} = require('./watchListOperationsMap.js');
+} from './watchListOperationsMap';
 
 describe('Programação IMPERATIVA - MAP', () => {
     test('Deve Obter primeiro objeto do array', () => {

@@ -1,5 +1,5 @@
-const { watchList } = require('./watchList.js');
-const { getRating, getRating2 } = require('./watchListOperationsReduce.js');
+import { watchList } from './watchList';
+import { getRating, getRating2 } from './watchListOperationsReduce';
 
 describe('Programação FUNCIONAL - REDUCE', () => {
     test('Deve retornar a media de imdbRating dos filmes de Christopher Nolan', () => {
