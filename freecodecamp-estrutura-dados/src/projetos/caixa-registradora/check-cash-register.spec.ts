@@ -1,4 +1,4 @@
-const { checkCashRegister } = require("./check-cash-register");
+import { checkCashRegister } from "./check-cash-register";
 
 test('deve retornar "{status: "OPEN",change: [["QUARTER", 0.5]]}"', () => {
     expect(checkCashRegister(19.5, 20, [

@@ -1,5 +1,10 @@
-// 
-const MOEDAS = {
+// interface moeda {
+type moeda = {
+    [key: string]: number
+}
+
+
+const MOEDAS: moeda = {
     PENNY: 0.01,
     NICKEL: 0.05,
     DIME: 0.1,
@@ -20,12 +25,12 @@ const MOEDAS = {
  * @param {Moedas[][]} cid Array com os tipos de moeda/cédulas disponíveis no caixa.
  * @returns {Object} Um objeto com o status do caixa e array com valores atualizados.
  */
-function checkCashRegister(price, cash, cid) {
+function checkCashRegister(price: number, cash: number, cid: any) {
     const TROCO_INICIAL = Number((cash * 100 - price * 100).toFixed(0)); // (problemas com precisão).
 
     let change = [];
     let troco = TROCO_INICIAL;
-    let totalDinheiroNoCaixa = cid.reduce((prev, curr) => prev += Number(curr[1] * 100), 0);
+    let totalDinheiroNoCaixa = cid.reduce((prev: number, curr: any) => prev += Number(curr[1] * 100), 0);
 
     // evitar que entrar nos laços.
     if (TROCO_INICIAL > totalDinheiroNoCaixa) {
@@ -85,6 +90,6 @@ function checkCashRegister(price, cash, cid) {
     }
 }
 
-module.exports = {
+export {
     checkCashRegister
 }

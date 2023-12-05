@@ -1,4 +1,4 @@
-const { convertToRoman } = require("./convert-to-roman")
+import { convertToRoman } from "./convert-to-roman"
 
 test('Deve retornar "III", para 3', () => {
     expect(convertToRoman(3)).toEqual("III")

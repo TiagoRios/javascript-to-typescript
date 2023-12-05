@@ -1,5 +1,9 @@
-function convertToRoman(num) {
-    let numerosRomanos = {
+interface romanos {
+    [key: string]: string
+}
+
+function convertToRoman(num: number) {
+    let numerosRomanos: romanos = {
         1: "I",
         4: "IV",
         5: "V",
@@ -14,21 +18,22 @@ function convertToRoman(num) {
         900: "CM",
         1000: "M",
     };
+
     let resultado = [];
     let chavesObjeto = Object.keys(numerosRomanos); // Array com as chaves na ordem da declaração.
 
     for (let i = chavesObjeto.length - 1; i >= 0; i--) {
         let quantidadeRepeticoes = Math.floor(num / Number(chavesObjeto[i]));
         num = num % Number(chavesObjeto[i]); // Resto da divisão. 
-        
+
         if (quantidadeRepeticoes > 0) {
             let numeroRomano = numerosRomanos[chavesObjeto[i]];
-            resultado.push(numeroRomano.repeat(quantidadeRepeticoes));            
+            resultado.push(numeroRomano.repeat(quantidadeRepeticoes));
         }
     }
     return resultado.join("");
 }
 
-module.exports = {
+export {
     convertToRoman
 }

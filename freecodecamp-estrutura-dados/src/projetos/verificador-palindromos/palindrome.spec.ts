@@ -1,4 +1,4 @@
-const { palindrome } = require("./palindrome");
+import { palindrome } from "./palindrome";
 
 test('deve retornar true para string "HaNnAh"', () => {
     expect(palindrome("HaNnAh")).toEqual(true);

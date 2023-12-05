@@ -1,4 +1,4 @@
-const { telephoneCheck } = require("./telephone-check")
+import { telephoneCheck } from "./telephone-check";
 
 describe('deve retornar "true" para:', () => {
   test('555-555-5555', () => {
